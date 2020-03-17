@@ -22,6 +22,13 @@ class Items extends React.Component {
     // TODO: Update state
   }
 
+  deleteItem = id => {
+    axios.delete(`/api/items/${id}`).then(res => {
+      const { items } = this.state;
+      this.setState({ items: items.filter(stuff => stuff.id !== id) });
+    });
+  };
+
   renderItems = () => {
     const { items } = this.state;
 
@@ -36,6 +43,9 @@ class Items extends React.Component {
         <Card.Content extra>
           <Button as={Link} to={`items/${item.id}`} color="blue">
             View
+          </Button>
+          <Button onClick={() => this.deleteItem(item.id)} color="red">
+            Delete
           </Button>
         </Card.Content>
       </Card>

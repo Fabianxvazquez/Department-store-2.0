@@ -55,7 +55,7 @@ export default class ItemForm extends React.Component {
               value={description}
               onChange={this.handleChange}
             />
-          </Form.Group>
+          </Form.Group>d
           <Form.Group widths="equal">
             <Form.Input
               label="Department"
