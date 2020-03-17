@@ -3,18 +3,18 @@ import { Card, Header, Button } from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-class Products extends React.Component {
-  state = { products: [] };
+class Items extends React.Component {
+  state = { items: [] };
 
   componentDidMount() {
     // TODO: Make GET request with axios
     axios
-      .get("api/products")
+      .get("api/items")
       .then(res => {
         console.log(res);
         //product arrays
         this.setState({
-          products: res.data
+          items: res.data
         });
       })
       .catch(err => {
@@ -24,18 +24,18 @@ class Products extends React.Component {
   }
 
   renderProducts = () => {
-    const { products } = this.state;
+    const { items } = this.state;
 
-    if (products.length <= 0) return <h2>No Products</h2>;
-    return products.map(product => (
-      <Card key={`product-${product.id}`}>
+    if (items.length <= 0) return <h2>Loading</h2>;
+    return items.map(item => (
+      <Card key={`product-${item.id}`}>
         <Card.Content>
-          <Card.Header>{product.name}</Card.Header>
-          <Card.Meta>{product.department}</Card.Meta>
-          <Card.Description>{product.description}</Card.Description>
+          <Card.Header>{item.name}</Card.Header>
+          <Card.Meta>{item.department}</Card.Meta>
+          <Card.Description>{item.description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Button as={Link} to={`products/${product.id}`} color="blue">
+          <Button as={Link} to={`items/${item.id}`} color="blue">
             View
           </Button>
         </Card.Content>
@@ -46,7 +46,7 @@ class Products extends React.Component {
   render() {
     return (
       <div>
-        <Header as="h1">Products</Header>
+        <Header as="h1">items</Header>
         <br />
         <Card.Group>{this.renderProducts()}</Card.Group>
       </div>
@@ -54,4 +54,4 @@ class Products extends React.Component {
   }
 }
 
-export default Products;
+export default Items;
