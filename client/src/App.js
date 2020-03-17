@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import { Container } from "semantic-ui-react";
+import { Route, Switch } from 'react-router-dom'
 import Home from "./components/Home";
 import About from "./components/About";
 import NoMatch from "./components/NoMatch";
-import Navbar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 import Items from "./components/Items";
 import ItemForm from "./components/ItemForm";
 import ItemView from "./components/ItemView";
