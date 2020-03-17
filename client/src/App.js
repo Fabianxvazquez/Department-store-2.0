@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
+import { Container } from "semantic-ui-react";
+import Home from "./components/Home";
+import About from "./components/About";
+import NoMatch from "./components/NoMatch";
+import Navbar from "./components/NavBar";
+import Items from "./components/Items";
+import ItemForm from "./components/ItemForm";
+import ItemView from "./components/ItemView";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <NavBar />
+      <Container>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/items" component={Items} />
+          <Route exact path="/items/:id" component={ItemView} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Container>
+    </Fragment>
   );
 }
 
