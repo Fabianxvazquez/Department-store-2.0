@@ -2,21 +2,19 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Button, Header, Segment } from "semantic-ui-react";
 
-export default class ProductView extends Component {
-  state = { product: {} };
+export default class ItemView extends Component {
+  state = { item: {} };
 
   componentDidMount() {
-    console.log(this.props.match.params);
-    axios.get(`/api/products/${this.props.match.params.id}`).then(res => {
-      console.log(res);
+    axios.get(`/api/items/${this.props.match.params.id}`).then(res => {
       this.setState({
-        product: res.data
+        item: res.data
       });
     });
     //upate UI
   }
   render() {
-    const { name, description, price, department } = this.state.product;
+    const { name, description, price, department } = this.state.item;
     return (
       <div>
         <Segment>

@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/items" component={Items} />
           <Route exact path="/items/:id" component={ItemView} />
+          <Route exact path="/item/new" component={ItemForm} />
           <Route component={NoMatch} />
         </Switch>
       </Container>

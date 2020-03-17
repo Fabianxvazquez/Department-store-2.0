@@ -2,20 +2,20 @@ import React from "react";
 import { Form, Header } from "semantic-ui-react";
 import axios from "axios";
 
-export default class ProductForm extends React.Component {
+export default class ItemForm extends React.Component {
   state = { name: "", description: "", department: "", price: "" };
 
   handleSubmit = e => {
-    const product = { ...this.state };
+    const item = { ...this.state }
     axios
-      .post("/api/products", {
-        product
+      .post("/api/items", {
+        item
       })
       .then(res => {
         console.log(res);
         this.setState({ name: "", description: "", department: "", price: "" });
         //go back to products page
-        this.props.history.push("/products");
+        this.props.history.push("/items");
       })
       .catch(err => {
         console.log(err);
@@ -37,7 +37,7 @@ export default class ProductForm extends React.Component {
     const { name, department, description, price } = this.state;
     return (
       <div>
-        <Header as="h1">New Product</Header>
+        <Header as="h1">New Item</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input

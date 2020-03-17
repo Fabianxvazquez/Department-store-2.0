@@ -11,7 +11,6 @@ class Items extends React.Component {
     axios
       .get("api/items")
       .then(res => {
-        console.log(res);
         //product arrays
         this.setState({
           items: res.data
@@ -23,7 +22,7 @@ class Items extends React.Component {
     // TODO: Update state
   }
 
-  renderProducts = () => {
+  renderItems = () => {
     const { items } = this.state;
 
     if (items.length <= 0) return <h2>Loading</h2>;
@@ -48,7 +47,7 @@ class Items extends React.Component {
       <div>
         <Header as="h1">items</Header>
         <br />
-        <Card.Group>{this.renderProducts()}</Card.Group>
+        <Card.Group>{this.renderItems()}</Card.Group>
       </div>
     );
   }
