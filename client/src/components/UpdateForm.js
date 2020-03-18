@@ -31,22 +31,22 @@ export default class UpdateForm extends Component {
     });
   };
 
-  handleSubmit = () => {
-    const item = this.state
-    console.log(item)
+  updateItem = (id, data) => {
     axios
-      .put(`/api/update/${item.id}`, item)
+      .put(`/api/update/${id}`, data)
       .then(res => {
-        console.log('submit hit')
         this.setState({
-          item: res
+          item:res
         })
-        this.render()
       })
       .catch(err => {
         console.log(err);
       });
   };
+
+  handleSubmit = () =>{
+    this.updateItem(this.state.id, this.state)
+  }
   render() {
     const {name, description, department, price } = this.state
     return (
