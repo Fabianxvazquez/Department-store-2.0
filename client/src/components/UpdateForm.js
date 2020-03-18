@@ -32,13 +32,12 @@ export default class UpdateForm extends Component {
   };
 
   updateItem = (data) => {
-    console.log(data)
+    
+    const id = parseInt(data.id)
     axios
-      .put(`/api/items/${data.id}`, data)
+      .put(`/api/items/${id}`, data)
       .then(res => {
-        this.setState({
-          item:res
-        })
+        console.log(res)
       })
       .catch(err => {
         console.log(err);
