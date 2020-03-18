@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Header, Segment, Form } from "semantic-ui-react";
+import { Button, Header, Segment} from "semantic-ui-react";
+import UpdateForm from './UpdateForm'
 
 export default class ItemView extends Component {
-  state = { item: {}, id: null};
-
-  componentDidMount() {
+  state = { item: {}, id: null, editing: false};
+  
+  axiosCall(){
     axios.get(`/api/items/${this.props.match.params.id}`).then(res => {
       this.setState({
         item: res.data,
         id: res.data.id
-      });
-    });
+       });
+     });
   }
+<<<<<<< HEAD
     handleChange = e => {
     const {
       target: { name, value }
@@ -86,15 +88,21 @@ export default class ItemView extends Component {
       </div>
     </>
     )
+=======
+    componentDidMount() {
+    this.axiosCall()
+>>>>>>> 2e4467aefc7e185b48a6f77ace3740181dba8819
   }
 
-  
-
-
+  toggleEdit =() => {
+    this.setState({
+      editing: !this.state.editing
+    })
+    this.axiosCall()
+  }
 
   render() {
     const { name, description, price, department } = this.state.item;
-    console.log(this.state)
     return (
       <div>
         <Segment>
@@ -110,10 +118,11 @@ export default class ItemView extends Component {
         <Button color="black" onClick={this.props.history.goBack}>
           Back
         </Button>
-        {this.updateForm(this.state.item)}
-        {/* <Button color="purple" onClick={() => this.updateItem(this.state.item)}>
-          Edit
-        </Button> */}
+        {/* {this.updateForm(this.state.item)} */}
+        {this.state.editing ? (<UpdateForm id={this.props.match.params.id} toggleEdit={this.toggleEdit}/>) : null}
+        <Button color="purple" onClick={this.toggleEdit}>
+          {this.state.editing ? 'hide form':'edit'}
+        </Button>
       </div>
     );
   }
