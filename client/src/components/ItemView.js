@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Header, Segment } from "semantic-ui-react";
+import ItemUpdate from "./ItemUpdate";
 
 export default class ItemView extends Component {
   state = { item: {} };
@@ -11,7 +12,7 @@ export default class ItemView extends Component {
         item: res.data
       });
     });
-    //upate UI
+    
   }
   render() {
     const { name, description, price, department } = this.state.item;
@@ -27,9 +28,13 @@ export default class ItemView extends Component {
         </Segment>
         <br />
         <br />
+        <ItemUpdate item={this.state.item}/>
         <Button color="black" onClick={this.props.history.goBack}>
           Back
         </Button>
+        {/* <Button color="purple" onClick={() => this.updateItem(this.state.item)}>
+          Edit
+        </Button> */}
       </div>
     );
   }

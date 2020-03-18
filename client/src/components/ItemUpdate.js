@@ -1,21 +1,26 @@
-import React from "react";
-import { Form, Header } from "semantic-ui-react";
-import axios from "axios";
+import React, { Component } from 'react'
+import { Form, Header} from 'semantic-ui-react'
+import axios from "axios"
 
-export default class ItemForm extends React.Component {
-  state = { name: "", description: "", department: "", price: ""};
 
-  handleSubmit = e => {
+export default class ItemUpdate extends Component {
+  state = { 
+    name:this.props.name, 
+    description: this.props.description, 
+    department: this.props.department,
+    price: this.props.price,
+    id: this.props.id
+  }
+
+   handleSubmit = id => {
     const item = { ...this.state }
+    console.log(item)
     axios
-      .post("/api/items", {
-        item
-      })
+      .put(`/api/items/${id}`, item)
       .then(res => {
         console.log(res);
-        this.setState({ name: "", description: "", department: "", price: "" });
         //go back to products page
-        this.props.history.push("/items");
+        this.props.history.push(`/items/${id}`);
       })
       .catch(err => {
         console.log(err);
@@ -33,8 +38,8 @@ export default class ItemForm extends React.Component {
     });
   };
 
-  render() {
-    const { name, department, description, price } = this.state;
+  render(){
+    const { name, department, description, price, id } = this.state
     return (
       <div>
         <Header as="h1">New Item</Header>
@@ -73,9 +78,10 @@ export default class ItemForm extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Button color="blue">Submit</Form.Button>
+          <Form.Button color="blue" onClick={() => this.handleSubmit(id)}>Submit</Form.Button>
         </Form>
       </div>
     );
   }
+
 }
