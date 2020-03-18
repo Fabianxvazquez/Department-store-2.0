@@ -110,6 +110,7 @@ export default class ItemView extends Component {
         <Button color="black" onClick={this.props.history.goBack}>
           Back
         </Button>
+        {this.updateForm()}
         {/* <Button color="purple" onClick={() => this.updateItem(this.state.item)}>
           Edit
         </Button> */}
