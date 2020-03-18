@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Items from "./components/Items";
 import ItemForm from "./components/ItemForm";
 import ItemView from "./components/ItemView";
+import UpdateForm from './components/UpdateForm';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/items" component={Items} />
           <Route exact path="/items/:id" component={ItemView} />
           <Route exact path="/item/new" component={ItemForm} />
+          <Route exact path="/update/:id" component={UpdateForm} />
           <Route component={NoMatch} />
         </Switch>
       </Container>
