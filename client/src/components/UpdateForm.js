@@ -5,17 +5,17 @@ import {Header, Form} from 'semantic-ui-react'
 
 export default class UpdateForm extends Component {
   state = {
-    name: {},
-    description: {},
-    department: {},
-    price: {},
-    id: this.props.id
+      name: {},
+      description: {},
+      department: {},
+      price: {}
   }
 
   componentDidMount() {
-    axios.get(`/api/items/${this.state.id}`).then(res => {
+    console.log(this.props.id)
+    axios.get(`/api/items/${this.props.id}`).then(res => {
+
       this.setState({
-        item: res.data,
         name: res.data.name,
         description: res.data.description,
         department: res.data.department,
@@ -32,12 +32,14 @@ export default class UpdateForm extends Component {
   };
 
   updateItem = (data) => {
-    
-    const id = parseInt(data.id)
+    const id = this.props.id
     axios
-      .put(`/api/items/${id}`, data)
+      .patch(`/api/items/${id}`, data)
       .then(res => {
-        console.log(res)
+        console.log(res.data)
+        this.setState({
+          state: res.data
+        })
       })
       .catch(err => {
         console.log(err);

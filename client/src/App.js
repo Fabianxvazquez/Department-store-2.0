@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/items" component={Items} />
           <Route exact path="/items/:id" component={ItemView} />
           <Route exact path="/item/new" component={ItemForm} />
-          <Route exact path="/items/update/:id" component={UpdateForm} />
+          <Route exact path="/items/:postID" component={UpdateForm} />
           <Route component={NoMatch} />
         </Switch>
       </Container>
