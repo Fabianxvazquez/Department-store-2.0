@@ -3,7 +3,7 @@ import { Form, Header } from "semantic-ui-react";
 import axios from "axios";
 
 export default class ItemForm extends React.Component {
-  state = { name: "", description: "", department: "", price: ""};
+  state = { name: "", description: "", department: "", price: "", editing: false };
 
   handleSubmit = e => {
     const item = { ...this.state }
