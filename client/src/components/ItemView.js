@@ -43,10 +43,10 @@ export default class ItemView extends Component {
           Back
         </Button>
         {/* {this.updateForm(this.state.item)} */}
-        <UpdateForm id={this.props.match.params.id} toggleEdit={this.toggleEdit}/>
-        {/* <Button color="purple" onClick={() => this.updateItem(this.state.item)}>
-          Edit
-        </Button> */}
+        {this.state.editing ? (<UpdateForm id={this.props.match.params.id} toggleEdit={this.toggleEdit}/>) : null}
+        <Button color="purple" onClick={this.toggleEdit}>
+          {this.state.editing ? 'hide form':'edit'}
+        </Button>
       </div>
     );
   }
