@@ -39,7 +39,7 @@ export default class ItemView extends Component {
       });
   };
 
-  updateForm = item => {
+  updateForm = () => {
     return (
     <>
       <div>
