@@ -31,9 +31,10 @@ export default class UpdateForm extends Component {
     });
   };
 
-  updateItem = (id, data) => {
+  updateItem = (data) => {
+    console.log(data)
     axios
-      .put(`/api/update/${id}`, data)
+      .put(`/api/items/${data.id}`, data)
       .then(res => {
         this.setState({
           item:res
@@ -45,7 +46,7 @@ export default class UpdateForm extends Component {
   };
 
   handleSubmit = () =>{
-    this.updateItem(this.state.id, this.state)
+    this.updateItem(this.state)
   }
   render() {
     const {name, description, department, price } = this.state
