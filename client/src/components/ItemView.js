@@ -4,15 +4,25 @@ import { Button, Header, Segment} from "semantic-ui-react";
 import UpdateForm from './UpdateForm'
 
 export default class ItemView extends Component {
-  state = { item: {}, id: null};
-
-  componentDidMount() {
+  state = { item: {}, id: null, editing: false};
+  
+  axiosCall(){
     axios.get(`/api/items/${this.props.match.params.id}`).then(res => {
       this.setState({
         item: res.data,
-        id: res.data.id,
-      });
-    });
+        id: res.data.id
+       });
+     });
+  }
+    componentDidMount() {
+    this.axiosCall()
+  }
+
+  toggleEdit =() => {
+    this.setState({
+      editing: !this.state.editing
+    })
+    this.axiosCall()
   }
 
   render() {
@@ -33,7 +43,7 @@ export default class ItemView extends Component {
           Back
         </Button>
         {/* {this.updateForm(this.state.item)} */}
-        <UpdateForm item={this.state.item} id={this.props.match.params.id} />
+        <UpdateForm id={this.props.match.params.id} toggleEdit={this.toggleEdit}/>
         {/* <Button color="purple" onClick={() => this.updateItem(this.state.item)}>
           Edit
         </Button> */}

@@ -14,7 +14,6 @@ export default class UpdateForm extends Component {
   componentDidMount() {
     console.log(this.props.id)
     axios.get(`/api/items/${this.props.id}`).then(res => {
-
       this.setState({
         name: res.data.name,
         description: res.data.description,
@@ -36,10 +35,8 @@ export default class UpdateForm extends Component {
     axios
       .patch(`/api/items/${id}`, data)
       .then(res => {
-        console.log(res.data)
-        this.setState({
-          state: res.data
-        })
+        console.log('hit then')
+        this.props.toggleEdit()
       })
       .catch(err => {
         console.log(err);
