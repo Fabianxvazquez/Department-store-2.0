@@ -75,6 +75,7 @@ class Items extends React.Component {
     );
   }
 }
+export default Items
 
 const DeleteButton = styled.div`
 display: flex;
