@@ -103,4 +103,4 @@ const StyledCard = styled(Card)`
   widith: 100px;
 `
 
-export default Items;
+
