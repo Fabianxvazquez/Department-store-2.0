@@ -9,6 +9,6 @@ const About = () => <HeaderText fSize="small">About</HeaderText>
 
 export default About;
 
-const appContrainer = styled.div`
-  background: linear-gradient (f6f6,white)
-`
+// const appContrainer = styled.div`
+//   background: linear-gradient (f6f6,white)
+// `
