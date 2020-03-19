@@ -14,84 +14,8 @@ export default class ItemView extends Component {
        });
      });
   }
-<<<<<<< HEAD
-    handleChange = e => {
-    const {
-      target: { name, value }
-    } = e;
-    //these do the same
-    // const name = e.target.name
-    // const value = e.target.value
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleSubmit = id => {
-    const item = { ...this.state }
-    axios
-      .put(`/api/items/${id}`, item)
-      .then(res => {
-        console.log(res);
-        //go back to products page
-        this.props.history.push(`/items/${id}`);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  updateForm = () => {
-    return (
-    <>
-      <div>
-        <Header as="h1">New Item</Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group widths="equal">
-            <Form.Input
-              label="Name"
-              name="name"
-              placeholder="Name"
-              value={this.state.item.name}
-              onChange={this.handleChange}
-              required
-            />
-            <Form.Input
-              label="Description"
-              name="description"
-              placeholder="Description"
-              value={this.state.item.description}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Input
-              label="Department"
-              name="department"
-              placeholder="Department"
-              value={this.state.item.department}
-              onChange={this.handleChange}
-            />
-            <Form.Input
-              label="Price"
-              name="price"
-              placeholder="Price"
-              type="number"
-              value={this.state.item.price}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Button color="blue" onClick={() => this.handleSubmit(this.state.id)}>
-            Submit
-          </Form.Button>
-        </Form>
-      </div>
-    </>
-    )
-=======
     componentDidMount() {
     this.axiosCall()
->>>>>>> 2e4467aefc7e185b48a6f77ace3740181dba8819
   }
 
   toggleEdit =() => {
