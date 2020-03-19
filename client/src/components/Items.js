@@ -44,7 +44,7 @@ class Items extends React.Component {
 
     if (items.length <= 0) return <h2>Loading</h2>;
     return items.map(item => (
-      <StyledCard key={`product-${item.id}`}>
+      <StyledCard key={`product-${item.id}`} className="ui card inverted">
         <Card.Content>
           <Card.Header>{item.name}</Card.Header>
           <Card.Meta>{item.department}</Card.Meta>
@@ -100,7 +100,7 @@ background-color: ${ props => props.theme.bg}
 `
 const StyledCard = styled(Card)`
   height: 150px;
-  background: grey;
+  widith: 100px;
 `
 
 export default Items;
