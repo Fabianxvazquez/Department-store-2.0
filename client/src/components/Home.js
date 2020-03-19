@@ -1,6 +1,7 @@
 import React from "react";
-import { Header } from "semantic-ui-react";
+// import { Header } from "semantic-ui-react";
+import HeaderText from './HeaderText'
 
-const Home = () => <Header as="h1">Home</Header>;
+const Home = () => <HeaderText fSize="large">Home</HeaderText>
 
 export default Home;

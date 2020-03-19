@@ -3,6 +3,7 @@ import { Card, Header, Button } from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DepOptions from "./DepSelector";
+import styled from 'styled-components'
 
 class Items extends React.Component {
   state = { items: [] };
@@ -42,7 +43,7 @@ class Items extends React.Component {
 
     if (items.length <= 0) return <h2>Loading</h2>;
     return items.map(item => (
-      <Card key={`product-${item.id}`}>
+      <StyledCard key={`product-${item.id}`}>
         <Card.Content>
           <Card.Header>{item.name}</Card.Header>
           <Card.Meta>{item.department}</Card.Meta>
@@ -56,7 +57,7 @@ class Items extends React.Component {
             Delete
           </Button>
         </Card.Content>
-      </Card>
+      </StyledCard>
     ));
   };
 
@@ -71,5 +72,9 @@ class Items extends React.Component {
     );
   }
 }
+
+const StyledCard = styled(Card)`
+  height: 150px;
+`
 
 export default Items;

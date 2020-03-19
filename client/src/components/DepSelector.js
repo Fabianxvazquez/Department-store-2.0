@@ -57,6 +57,10 @@ class DepOptions extends Component {
     const {DepOptions, value} = this.state
     return (
       <>
+        <Button onClick={this.updateItems} color='blue'>Update Page</Button>
+        <Button onClick={this.props.getItems} color='green'>All Items</Button>
+        <br/>
+        <br />
         <Select
           selection
           name="department"
@@ -65,8 +69,7 @@ class DepOptions extends Component {
           options={DepOptions}
           value={value}
         />
-        <Button onClick={this.updateItems} color='blue'>Update Page</Button>
-         <Button onClick={this.props.getItems} color='green'>All Items</Button>
+        <br />
       </>
     );
     
