@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import DepOptions from "./DepSelector";
 import styled from "styled-components";
+import HeaderText from "./HeaderText"
 
 
 class Items extends React.Component {
@@ -67,7 +68,7 @@ class Items extends React.Component {
   render() {
     return (
       <div>
-        <Header as="h1">items</Header>
+        <HeaderText fSize='large'>Items</HeaderText>
         <DepOptions items={this.state.items} getItems={this.getItems} update={this.searchUpdate}/>
         <br />
         <Card.Group>{this.renderItems()}</Card.Group>

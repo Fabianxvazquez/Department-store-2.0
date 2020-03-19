@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Header } from "semantic-ui-react";
 import axios from "axios";
+import HeaderText from "./HeaderText"
 
 export default class ItemForm extends React.Component {
   state = { name: "", description: "", department: "", price: "", editing: false };
@@ -37,7 +38,7 @@ export default class ItemForm extends React.Component {
     const { name, department, description, price } = this.state;
     return (
       <div>
-        <Header as="h1">New Item</Header>
+        <HeaderText fSize="large">New Item</HeaderText>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
