@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => (
-  <Menu>
+  <Menu inverted>
     <Link to="/">
       <Menu.Item>Home</Menu.Item>
     </Link>

@@ -75,13 +75,12 @@ class Items extends React.Component {
     );
   }
 }
-export default Items
 
 const DeleteButton = styled.div`
 display: flex;
 background: red;
 color: white;
-padding: 10px;
+padding: 5px;
 justify-content:center;
 cursor: pointer
 transition: background .5 ease;
@@ -101,6 +100,7 @@ background-color: ${ props => props.theme.bg}
 `
 const StyledCard = styled(Card)`
   height: 150px;
+  background: grey;
 `
 
 
