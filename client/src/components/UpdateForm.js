@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Header, Form} from 'semantic-ui-react'
+import HeaderText from './HeaderText'
 
 
 export default class UpdateForm extends Component {
@@ -51,7 +52,7 @@ export default class UpdateForm extends Component {
     return (
       <>
         <div>
-          <Header as="h1">Update</Header>
+          <HeaderText as="h1">Update</HeaderText>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group widths="equal">
               <Form.Input
