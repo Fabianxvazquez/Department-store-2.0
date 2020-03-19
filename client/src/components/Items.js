@@ -1,8 +1,9 @@
 import React from "react";
-import { Card, Header, Button } from "semantic-ui-react";
+import { Card, Header, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DepOptions from "./DepSelector";
+import styled from "styled-components";
 
 class Items extends React.Component {
   state = { items: [] };
@@ -52,9 +53,11 @@ class Items extends React.Component {
           <Button as={Link} to={`items/${item.id}`} color="blue">
             View
           </Button>
-          <Button onClick={() => this.deleteItem(item.id)} color="red">
-            Delete
-          </Button>
+          <ButtonNew>
+            <DeleteButton onClick={() => this.deleteItem(item.id)}>
+              <Icon className="trash alternate outline"></Icon>
+            </DeleteButton>
+          </ButtonNew>
         </Card.Content>
       </Card>
     ));
@@ -72,4 +75,27 @@ class Items extends React.Component {
   }
 }
 
-export default Items;
+export default Items
+
+const DeleteButton = styled.div`
+display: flex;
+background: red;
+color: white;
+padding: 10px;
+justify-content:center;
+cursor: pointer
+transition: background .5 ease;
+border-radius: 10px;
+
+&:hover{
+  background:#606060;
+  transision: background .3s ease;
+}
+`
+
+const ButtonNew = styled.a`
+float: right;
+border-radius: 10px;
+color: ${props => props.theme.fg} !important;
+background-color: ${ props => props.theme.bg}
+`
