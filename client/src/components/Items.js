@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import DepOptions from "./DepSelector";
 import styled from "styled-components";
 
+
 class Items extends React.Component {
   state = { items: [] };
 
@@ -43,7 +44,7 @@ class Items extends React.Component {
 
     if (items.length <= 0) return <h2>Loading</h2>;
     return items.map(item => (
-      <Card key={`product-${item.id}`}>
+      <StyledCard key={`product-${item.id}`}>
         <Card.Content>
           <Card.Header>{item.name}</Card.Header>
           <Card.Meta>{item.department}</Card.Meta>
@@ -59,7 +60,7 @@ class Items extends React.Component {
             </DeleteButton>
           </ButtonNew>
         </Card.Content>
-      </Card>
+      </StyledCard>
     ));
   };
 
@@ -74,7 +75,6 @@ class Items extends React.Component {
     );
   }
 }
-
 export default Items
 
 const DeleteButton = styled.div`
@@ -99,3 +99,8 @@ border-radius: 10px;
 color: ${props => props.theme.fg} !important;
 background-color: ${ props => props.theme.bg}
 `
+const StyledCard = styled(Card)`
+  height: 150px;
+`
+
+export default Items;

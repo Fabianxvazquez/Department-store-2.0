@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from 'styled-components'
 
 const theme = {
   fg:'black',
