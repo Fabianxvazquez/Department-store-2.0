@@ -5,11 +5,21 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
+import { ThemeProvider } from 'styled-componenets'
+
+const theme = {
+  fg:'black',
+  bg:'grey',
+  fgdark:'grey',
+  bgdark:'black'
+}
 
 ReactDOM.render(
+  <ThemeProvider theme={theme}>
   <BrowserRouter>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+</ThemeProvider>,
   document.getElementById("root")
 );
 
