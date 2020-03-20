@@ -19,8 +19,8 @@ class DepOptions extends Component {
           (d, i) => {
             return { value: d, key: i+1, text: d };
           }
-        );
-        console.log(DepOptions);
+        )
+        DepOptions.push({value:'All Items', key: 0, text:'All Items'})
         this.setState({
           DepOptions: DepOptions,
           items: this.props.items
@@ -35,11 +35,8 @@ class DepOptions extends Component {
     axios
       .get("api/items")
       .then(res => {
-        if (value === "") {
-          console.log("in the if");
-          this.setState({
-            items: res.data
-          });
+        if (value === "All Items") {
+          this.props.update(res.data)
         } else {
           // const filteredArr = res.data.filter(item => item.department === 'Automotive')
           let findTerm = DepOptions.filter(dep => value === dep.value);
