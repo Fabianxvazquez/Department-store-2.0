@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Header, Form} from 'semantic-ui-react'
+import {Form} from 'semantic-ui-react'
 import HeaderText from './HeaderText'
 
 

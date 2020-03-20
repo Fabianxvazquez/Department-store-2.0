@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Header } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import axios from "axios";
 import HeaderText from "./HeaderText"
 import styled from 'styled-components'
@@ -14,7 +14,6 @@ export default class ItemForm extends React.Component {
         item
       })
       .then(res => {
-        console.log(res);
         this.setState({ name: "", description: "", department: "", price: "" });
         //go back to products page
         this.props.history.push("/items");

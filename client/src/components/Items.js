@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Header, Button, Icon } from "semantic-ui-react";
+import { Card, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DepOptions from "./DepSelector";
@@ -8,7 +8,7 @@ import HeaderText from "./HeaderText"
 
 
 class Items extends React.Component {
-  state = { items: [] };
+  state = { items: [], load: true };
 
   componentDidMount() {
     this.getItems()
@@ -20,7 +20,6 @@ class Items extends React.Component {
       this.setState({ items: items.filter(stuff => stuff.id !== id) });
     });
   };
-
   searchUpdate = (response) => {
     this.setState({
       items: response
@@ -32,7 +31,8 @@ class Items extends React.Component {
       .get("api/items")
       .then(res => {
         this.setState({
-          items: res.data
+          items: res.data,
+          load: false
         });
       })
       .catch(err => {
@@ -41,9 +41,9 @@ class Items extends React.Component {
   }
 
   renderItems = () => {
-    const { items } = this.state;
+    const { items, load } = this.state;
 
-    if (items.length <= 0) return <h2>Loading</h2>;
+  if (items.length <= 0) return <h2>{load ? "Loading" : "Please pick a Department"}</h2>;
     return items.map(item => (
       <StyledCard key={`product-${item.id}`} className="ui card inverted">
         <Card.Content>
