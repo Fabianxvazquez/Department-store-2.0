@@ -6,19 +6,21 @@ class DepOptions extends Component {
   state = {
     DepOptions: [],
     items: this.props.items,
-    value: ''
+    value: ""
   };
   componentDidMount() {
     axios
       .get("api/items")
       .then(res => {
-        let DepOptions = res.data.map((item) => {
-          return ({
-            value: item.department,
-            key: item.index,
-            text: item.department
-          })
-        })
+        const DepOptions = Array
+        .from(new Set(res.data
+          .map(i => i.department)))
+          .map(
+          (d, i) => {
+            return { value: d, key: i+1, text: d };
+          }
+        );
+        console.log(DepOptions);
         this.setState({
           DepOptions: DepOptions,
           items: this.props.items
@@ -33,17 +35,19 @@ class DepOptions extends Component {
     axios
       .get("api/items")
       .then(res => {
-        if (value === '') {
-          console.log("in the if")
+        if (value === "") {
+          console.log("in the if");
           this.setState({
             items: res.data
           });
         } else {
           // const filteredArr = res.data.filter(item => item.department === 'Automotive')
-          let findTerm = DepOptions.filter(dep => value === dep.value)
-          const searchTerm = findTerm[0].value
-          let currentItems = res.data.filter(item => (item.department === searchTerm));
-          this.props.update(currentItems)
+          let findTerm = DepOptions.filter(dep => value === dep.value);
+          const searchTerm = findTerm[0].value;
+          let currentItems = res.data.filter(
+            item => item.department === searchTerm
+          );
+          this.props.update(currentItems);
         }
       })
       .catch(err => {
@@ -51,15 +55,21 @@ class DepOptions extends Component {
       });
   };
 
-  handleChange = (e, {value}) => {this.setState({ value })};
+  handleChange = (e, { value }) => {
+    this.setState({ value });
+  };
 
   render() {
-    const {DepOptions, value} = this.state
+    const { DepOptions, value } = this.state;
     return (
       <>
-        <Button onClick={this.updateItems} color='blue'>Update Page</Button>
-        <Button onClick={this.props.getItems} color='green'>All Items</Button>
-        <br/>
+        <Button onClick={this.updateItems} color="blue">
+          Update Page
+        </Button>
+        <Button onClick={this.props.getItems} color="green">
+          All Items
+        </Button>
+        <br />
         <br />
         <Select
           selection
@@ -72,7 +82,6 @@ class DepOptions extends Component {
         <br />
       </>
     );
-    
   }
 }
 
