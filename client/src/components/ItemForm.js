@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Header } from "semantic-ui-react";
 import axios from "axios";
 import HeaderText from "./HeaderText"
+import styled from 'styled-components'
 
 export default class ItemForm extends React.Component {
   state = { name: "", description: "", department: "", price: "", editing: false };
@@ -80,3 +81,7 @@ export default class ItemForm extends React.Component {
     );
   }
 }
+ 
+const StyledForm = styled.div`
+  color: white
+`

@@ -82,8 +82,8 @@ const DeleteButton = styled.div`
 display: flex;
 background: red;
 color: white;
-padding: 5px;
-justify-content:center;
+padding: 10px;
+justify-content: center;
 cursor: pointer
 transition: background .5 ease;
 border-radius: 10px;

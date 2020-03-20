@@ -12,6 +12,6 @@ const fontSize = (size) => {
 
 export default styled.h1`
   color: white !important;
-  text-align: center;
+  text-align: left;
   font-size: ${props => fontSize(props.fSize)} !important;
 `
